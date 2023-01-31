@@ -26,7 +26,6 @@ incomes <- c(60, 49, 40, 61, 64, 60, 59, 54, 62, 69, 70, 42, 56,
 
 # Para calcular a renda média de cada estado, podemos usar a função tapply()
 # Essa função aplica uma função qualquer a todos os levels
-
 incmeans <- tapply(incomes, statef, mean)
 incmeans
 
@@ -34,4 +33,16 @@ incmeans
 tapply(incomes, statef, median)
 
 
+# Podemos escrever uma função para calcular o erro padrão para qualquer vetor.
+stdError <- function(x) sqrt(var(x)/length(x))
+tapply(incomes, statef, stdError)
 
+# Às vezes os levels terão uma ordem natural que queremos registrar
+# e queremos que nossa análise estatística use isso.
+# A função ordered() cria fatores ordenados, mas em todo o resto 
+# é semelhante a factor(). 
+
+# Os levels serão ordenados, não os componentes dos fatores.
+
+state_ordered <- ordered(state)
+state_ordered
